@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func onClickLink(_ sender: UIButton) {
+        let svc = SFSafariViewController(url: albums[currentAlbum].link)
+        present(svc,animated: true,completion: nil)
     }
     
     @IBAction func onClickLike(_ sender: UIButton) {
