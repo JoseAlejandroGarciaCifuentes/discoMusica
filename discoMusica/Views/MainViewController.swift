@@ -44,9 +44,11 @@ class MainViewController: UIViewController {
         
         if albums[currentAlbum].isLiked {
             sender.setBackgroundImage(likedImage, for: .normal)
+            showAlert(is_liked: false)
             albums[currentAlbum].isLiked = false
         }else{
             sender.setBackgroundImage(unlikedImage, for: .normal)
+            showAlert(is_liked: true)
             albums[currentAlbum].isLiked = true
         }
     }
@@ -70,6 +72,22 @@ class MainViewController: UIViewController {
         }else{
             likeButton.setBackgroundImage(likedImage, for: .normal)
         }
+    }
+    
+    func showAlert(is_liked:Bool){
+        var textToShow:String = ""
+        
+        if is_liked{
+            textToShow = "You have just added this album to favourites!!"
+        }else{
+            textToShow = "You now hate this album, shame on you"
+        }
+            
+        let alert = UIAlertController(title: "Alert", message: textToShow, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
 }
 
